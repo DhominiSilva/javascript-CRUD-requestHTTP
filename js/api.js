@@ -5,7 +5,7 @@ const api = {
             return await response.json(); // converte a resposta da API para um objeto JS
             
         }
-        catch {
+        catch (error) {
             alert('Não foi possível carregar os pensamentos');
             throw error;
         }
