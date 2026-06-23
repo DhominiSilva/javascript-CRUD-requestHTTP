@@ -16,7 +16,11 @@ async function manipularSubmissaoFormulario(event) {
     const autoria = document.getElementById('pensamento-autoria').value; // obtém o valor do campo de entrada de autoria do pensamento
 
     try {
-        await api.salvarPensamento({ conteudo, autoria }); // chama a função salvarPensamento do objeto api para enviar os dados do novo pensamento para a API e espera a resposta
+        if(id !== null){
+            await api.editarPensamento({ id, conteudo, autoria })
+        }else{
+            await api.salvarPensamento({ conteudo, autoria }); // chama a função salvarPensamento do objeto api para enviar os dados do novo pensamento para a API e espera a resposta
+        }
         ui.renderizarPensamentos(); // chama a função renderizarPensamentos do objeto ui para atualizar a lista de pensamentos na página com o novo pensamento adicionado
     }
     catch (error) {
