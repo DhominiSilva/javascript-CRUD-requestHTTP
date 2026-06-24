@@ -11,6 +11,7 @@ const ui = {
 
     async renderizarPensamentos() {
         const listaPensamentos = document.getElementById('lista-pensamentos');
+        listaPensamentos.innerHTML = "";
 
         try {
             const pensamentos = await api.buscarPensamentos(); // chama a função buscarPensamentos do objeto api e espera a resposta
@@ -53,6 +54,23 @@ const ui = {
         const icones = document.createElement("div");
         icones.classList.add("icones");
         icones.appendChild(botaoEditar);
+
+        const botaoDeletar = document.createElement('button');
+        pensamentoAutoria.classList.add('botao-deletar');
+        botaoDeletar.onclick = async () => {
+            try{
+                await api.excluirPensamento(pensamento.id);
+                ui.renderizarPensamentos();
+            }catch{
+                alert('Erro ao excluir pensamento')
+            }
+        };
+
+        const iconeDeletar = document.createElement("img");
+        iconeDeletar.src = 'assets/imagens/icone-excluir.png';
+        iconeDeletar.alt = "Excluir";
+        botaoDeletar.appendChild(iconeDeletar);
+        icones.appendChild(botaoDeletar);
 
         li.appendChild(iconeAspas); // adiciona o elemento de imagem do ícone de aspas como filho do elemento de lista
         li.appendChild(pensamentoConteudo);

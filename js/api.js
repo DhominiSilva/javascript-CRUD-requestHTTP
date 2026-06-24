@@ -55,7 +55,20 @@ const api = {
             alert('Erro ao editar pensamento');
             throw error;
         }
+    },
+
+    async excluirPensamento(id){ // async espera a resposta da API sem travar o programa
+        try {
+            const response = await fetch(`http://localhost:3000/pensamentos/${id}`, {
+                method: 'DELETE' // método HTTP para enviar dados
+            });
+        }
+        catch (error) {
+            alert('Erro ao excluir pensamento');
+            throw error;
+        }
     }
+
 }
 
 export default api; // exporta o objeto api para ser usado em outros arquivos do projeto
