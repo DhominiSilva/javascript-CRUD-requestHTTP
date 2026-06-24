@@ -1,8 +1,10 @@
+const URL_BASE = "http://localhost:3000"
+
 const api = {
     async buscarPensamentos(){ // async espera a resposta da API sem travar o programa
         // método get para buscar os pensamentos da API, por padrão o fetch usa o método GET, então não é necessário especificar
         try {
-            const response = await fetch('http://localhost:3000/pensamentos'); // await espera a resposta da API sem travar o programa
+            const response = await fetch(`${URL_BASE}/pensamentos`); // await espera a resposta da API sem travar o programa
             return await response.json(); // converte a resposta da API para um objeto JS
         }
         catch (error) {
@@ -13,7 +15,7 @@ const api = {
 
     async salvarPensamento(pensamento){ // async espera a resposta da API sem travar o programa
         try {
-            const response = await fetch('http://localhost:3000/pensamentos', {
+            const response = await fetch(`${URL_BASE}/pensamentos`, {
                 method: 'POST', // método HTTP para enviar dados
                 headers: {
                     "Content-Type": "application/json" // tipo de conteúdo para enviar os dados em formato JSON
@@ -31,7 +33,7 @@ const api = {
     async buscarPensamentoById(id){ // async espera a resposta da API sem travar o programa
         // método get para buscar os pensamentos da API, por padrão o fetch usa o método GET, então não é necessário especificar
         try {
-            const response = await fetch(`http://localhost:3000/pensamentos/${id}`); // await espera a resposta da API sem travar o programa
+            const response = await fetch(`${URL_BASE}/pensamentos/${id}`); // await espera a resposta da API sem travar o programa
             return await response.json(); // converte a resposta da API para um objeto JS
         }
         catch (error) {
@@ -42,7 +44,7 @@ const api = {
 
     async editarPensamento(pensamento){ // async espera a resposta da API sem travar o programa
         try {
-            const response = await fetch(`http://localhost:3000/pensamentos/${pensamento.id}`, {
+            const response = await fetch(`${URL_BASE}/pensamentos/${pensamento.id}`, {
                 method: 'PUT', // método HTTP para enviar dados
                 headers: {
                     "Content-Type": "application/json" // tipo de conteúdo para enviar os dados em formato JSON
@@ -59,7 +61,7 @@ const api = {
 
     async excluirPensamento(id){ // async espera a resposta da API sem travar o programa
         try {
-            const response = await fetch(`http://localhost:3000/pensamentos/${id}`, {
+            const response = await fetch(`${URL_BASE}/pensamentos/${id}`, {
                 method: 'DELETE' // método HTTP para enviar dados
             });
         }
