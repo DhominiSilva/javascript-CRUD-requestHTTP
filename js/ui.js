@@ -77,8 +77,19 @@ const ui = {
         li.appendChild(pensamentoAutoria);
         li.appendChild(icones)
         listaPensamentos.appendChild(li); // adiciona o elemento de lista como filho do elemento de lista de pensamentos
-    }
+    },
 
+    async renderizarMuralVazio() {
+        const buscarPensamentos = await api.buscarPensamentos();
+        console.log('rend mural');
+        if(buscarPensamentos.length === 0){
+            const mensagemMuralVazio = document.getElementById('mensagem-mural-vazio');
+            mensagemMuralVazio.innerHTML = `
+                <p>Nada por aqui ainda, que tal compartilhar alguma ideia?</p>
+                <img src="/assets/imagens/lista-vazia.png" alt="Caixa vazia">
+            `;
+        }
+    }
 
 }
 export default ui; // exporta o objeto ui para ser usado em outros arquivos do projeto

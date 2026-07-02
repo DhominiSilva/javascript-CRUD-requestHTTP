@@ -3,6 +3,7 @@ import api from "./api.js"; // importa o objeto api do arquivo api.js para usar 
 
 document.addEventListener('DOMContentLoaded', () => {
     ui.renderizarPensamentos(); // chama a função renderizarPensamentos do objeto ui para exibir os pensamentos na página
+    ui.renderizarMuralVazio(); // chama a função renderizarMuralVazio do objeto ui para exibir a mensagem de mural vazio na página, caso não tenha pensamentos
 
     const formPensamento = document.getElementById('pensamento-form');
     formPensamento.addEventListener('submit', manipularSubmissaoFormulario); // adiciona um ouvinte de evento para o envio do formulário de pensamento, chamando a função manipularSubmissaoFormulario quando o formulário for enviado

@@ -282,3 +282,12 @@ span {
   background: #041832;
   margin: 96px 0 48px 0;
 }
+
+#mensagem-mural-vazio{
+  text-align: center;
+}
+
+#mensagem-mural-vazio p{
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
